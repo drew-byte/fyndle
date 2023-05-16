@@ -26,7 +26,7 @@ $data = check_login($conn);
 
 <body id="page-top">
     <div id="wrapper">
-    <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-primary p-0">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0 mt-5" href="#">
                     <div class="sidebar-brand-icon rotate-n-15"></div>
@@ -35,19 +35,22 @@ $data = check_login($conn);
                 <hr class="sidebar-divider my-0" />
 
                 <br><br>
-                <a class="nav-link text-bg-primary" href="index.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:3px"></i><b>   Dashboard</b></span></a>
+
+                <a class="nav-link text-bg-primary" href="index.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:3px"></i><b> Dashboard</b></span></a>
                 <br>
-                <a class="nav-link text-bg-primary" href="documents.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:3px"></i><b>   Documents</b></span></a>
+                <a class="nav-link text-bg-primary" href="project.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:-20px"></i><b> Projects</b></span></a>
                 <br>
-                <a class="nav-link text-bg-primary" href="profile.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:5px"></i><b>   User Profile</b></span></a>
+                <a class="nav-link text-bg-primary" href="documents.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:3px"></i><b> Documents</b></span></a>
                 <br>
-                <a class="nav-link text-bg-primary" href="messages.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:-43px"></i><b>   Email</b></span></a>
+                <a class="nav-link text-bg-primary" href="profile.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:5px"></i><b> User Profile</b></span></a>
                 <br>
-                <a class="nav-link text-bg-primary" href="employee.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:-13px"></i><b>   Employee</b></span></a></a>
+                <a class="nav-link text-bg-primary" href="messages.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:-43px"></i><b> Email</b></span></a>
                 <br>
-                <a class="nav-link text-bg-primary" href="settings.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:-23px"></i><b>   Settings</b></span></a></a>
+                <a class="nav-link text-bg-primary" href="employee.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:-13px"></i><b> Employee</b></span></a></a>
                 <br>
-                <a class="nav-link text-bg-primary" href="login.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:-33px"></i><b>   Logout</b></span></a></a>
+                <a class="nav-link text-bg-primary" href="settings.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:-23px"></i><b> Settings</b></span></a></a>
+                <br>
+                <a class="nav-link text-bg-primary" href="login.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:-33px"></i><b> Logout</b></span></a></a>
                 <br>
             </div>
         </nav>
@@ -91,31 +94,27 @@ $data = check_login($conn);
 
                 if (isset($_POST['submit'])) {
 
-                    if($_POST['manager'] == "" || $_POST['manager'] == "" || $_POST['title'] == "" || $_POST['goal'] == "" || $_POST['scope'] == "" || $_POST['timeline'] == "" || $_POST['ghDrive'] == "" || $_POST['meet'] == "" )
-                    
-                    {
-                        ?>
-                        <script>alert("Try Again. Fill up the form completely.");</script>
-                        <?php
-                    }
-                    else {
                     $manager = $_POST['manager'];
                     $title = $_POST['title'];
                     $description = $_POST['description'];
                     $goal = $_POST['goal'];
                     $scope = $_POST['scope'];
                     $timeline = $_POST['timeline'];
+                    $creator = $data['email'];
                     $ghDrive = $_POST['ghDrive'];
                     $meet = $_POST['meet'];
-                    $creator = $data['email'];
+                    $m1 = "Vacancy";
+                    $m2 = "Vacancy";
+                    $m3 = "Vacancy";
+                    $m4 = "Vacancy";
 
 
-                    $sql = "INSERT INTO `project`(id,manager,title, description, goal, scope,timeline,creator,ghDrive,meet) VALUES (NULL,'$manager','$title','$description','$goal','$scope','$timeline','$creator','$ghDrive','$meet')";
+
+                    $sql = "INSERT INTO `project`(id,manager,title, description, goal, scope,timeline,creator,ghDrive,meet,m1,m2,m3,m4) VALUES (NULL,'$manager','$title','$description','$goal','$scope','$timeline','$creator','$ghDrive','$meet','$m1','$m2','$m3','$m4')";
 
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
-                        header("Location: createProject.php");
-                    }
+                        header("Location: index.php");
                     }
                 }
 
@@ -127,7 +126,7 @@ $data = check_login($conn);
                     </div>
                 </div>
                 <div class="container">
-                  
+
 
 
                     <div class="card shadow border-start-success py-2">
@@ -136,8 +135,8 @@ $data = check_login($conn);
                                 <div class="col me-2">
 
                                     <br>
-                                    <form method="post" action="createProject.php">
-                                   
+                                    <form method="post">
+
                                         <div class="row mt-3">
                                             <div class="col col-lg-4">
                                                 <label for="manager" class="form-label">Project Manager: </label>
@@ -174,25 +173,25 @@ $data = check_login($conn);
                                             </div>
                                         </div>
                                         <div class="row mt-3">
-                                            
+
                                             <div class="col col-lg-12">
                                                 <label for="scope" class="form-label">Github Repository: </label>
                                                 <input type="text" class="form-control" name="ghDrive" id="scope" placeholder="">
                                             </div>
-                                            
+
                                         </div>
-                                      
+
                                         <br>
-                                        
+
                                         <div class="text-dark fw-bold h5 mb-0" style="height: 24px">
-                                        
+
                                             <button type="submit" name="submit" class="btn btn-success text-white">Add</button>
                                             <button type="button" class="btn btn-danger">Cancel</button>
                                         </div>
-                                        
-                                       
+
+
                                     </form>
-                                
+
                                 </div>
                             </div>
                         </div>

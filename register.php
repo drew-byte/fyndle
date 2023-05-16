@@ -5,26 +5,6 @@ session_start();
 include "connection.php";
 include "functions.php";
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $number = $_POST['number'];
-    $gender = $_POST['gender'];
-    $address = $_POST['address'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $city = $_POST['city'];
-    $country = $_POST['country'];
-    $status = "Active now";
-
-    $sql1 = "INSERT INTO `accounts`(id, firstName, lastName, number , gender ,email, password, address, city, country,status) VALUES (NULL,'$firstName','$lastName','$number','$gender','$email','$password','$address','$city','$country','$status')";
-
-    $result = mysqli_query($conn, $sql1);
-
-    header("Location: login.php");
-    die;
-}
-
 ?>
 
 
@@ -40,6 +20,28 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
 </head>
+
+<?php
+
+if (isset($_POST['submit'])) {
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $number = $_POST['number'];
+    $gender = $_POST['gender'];
+    $address = $_POST['address'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $city = $_POST['city'];
+    $country = $_POST['country'];
+    $status = "Active now";
+
+    $sql1 = "INSERT INTO `accounts`(id, image,firstName, lastName, number , gender ,email, password, address, city, country,status) VALUES (NULL,'$image','$firstName','$lastName','$number','$gender','$email','$password','$address','$city','$country','$status')";
+
+    $result = mysqli_query($conn, $sql1);
+
+    header("Location: login.php");
+}
+?>
 
 <body class="bg-gradient-primary">
     <div class="container " style="margin-top:100px;">

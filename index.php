@@ -304,10 +304,10 @@ $data = check_login($conn);
                                         <div class="card shadow mb-4" style="">
                                             <div class="card-header d-flex justify-content-between align-items-center" style="height:60px;">
                                                 <h6 class="text-primary fw-bold m-0">Forums</h6>
-
+                                               
                                             </div>
                                             <div class="card-body">
-
+                                            <img src="assets/img/wireframe.drawio.png" alt="" style="width:100%">
                                                
 
 

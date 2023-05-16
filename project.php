@@ -23,7 +23,7 @@ $data = check_login($conn);
 
 <body id="page-top">
     <div id="wrapper">
-        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-primary p-0">
+    <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0 mt-5" href="#">
                     <div class="sidebar-brand-icon rotate-n-15"></div>
@@ -32,7 +32,10 @@ $data = check_login($conn);
                 <hr class="sidebar-divider my-0" />
 
                 <br><br>
+
                 <a class="nav-link text-bg-primary" href="index.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:3px"></i><b> Dashboard</b></span></a>
+                <br>
+                <a class="nav-link text-bg-primary" href="project.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:-20px"></i><b>   Projects</b></span></a>
                 <br>
                 <a class="nav-link text-bg-primary" href="documents.php"><span><i class="fa-solid fas fa-circle" style="color: #f6d32d;width:25px;margin-left:3px"></i><b> Documents</b></span></a>
                 <br>
